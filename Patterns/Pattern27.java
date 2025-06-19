@@ -1,41 +1,41 @@
 import java.util.Scanner;
-public class Pattern12 {
-
+public class Pattern27 {
+    
     public static void main(String[] args) {
         
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
 
+        int row=1;
         int nsp = n-1;
-        int nst=1;
-        int row =1;
-
+        int nst = 1;
         while(row<=n){
 
-            int csp1=0;
-            while(csp1<nsp){
+            int csp = 0;
+            while(csp<nsp){
                 System.out.print("  ");
-                csp1++;
+                csp++;
             }
 
             int cst = 0;
+            int val = 0;
             while(cst<nst){
-                if(cst%2==0){
-                    System.out.print("* ");
-                    cst++;
+              
+                if(cst<=nst/2){
+                    val++;
                 }else{
-                    System.out.print("! ");
-                    cst++;
+                    val--;
                 }
+                  System.out.print(val + " ");
+                cst++;
             }
             System.out.println();
-            nst+=2;
-            nsp--;
             row++;
+            nsp--;
+            nst+=2;
 
         }
-        
-
 
     }
+
 }
