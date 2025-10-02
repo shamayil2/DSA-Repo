@@ -1,0 +1,111 @@
+package TreesPartOne;
+
+import java.util.Scanner;
+
+public class BinaryTree {
+
+    public class Node{
+        int val;
+        Node left;
+        Node right;
+    }
+
+    private Node root;
+    Scanner scn = new Scanner(System.in);
+    public void BinaryTree(){
+        this.root = createTree();
+    }
+
+    private Node createTree() {
+        Node nn =  new Node();
+        int item = scn.nextInt();
+        nn.val = item;
+        System.out.println(item + " has  left child? ");
+        boolean hlc = scn.nextBoolean();
+        if(hlc){
+            nn.left = createTree();
+        }
+
+        System.out.println(item + " has right child ");
+        boolean hrc = scn.nextBoolean();
+        if(hrc){
+            nn.right = createTree();
+        }
+
+
+        return nn;
+    }
+
+    public void Display(){
+
+        display(this.root);
+
+    }
+
+    private void display(Node temp) {
+        if(temp==null){
+            return;
+        }
+
+        String s = " " + temp.val;     
+
+        if(temp.left!=null){
+            s = temp.left.val + " <--" + s; 
+        }else{
+            s = " . <-- " + s ; 
+        }
+
+        if(temp.right!=null){
+            s = s + " --> " + temp.right.val;
+        }else{
+            s = s + " --> " + " . ";
+        }
+        System.out.println(s);
+        display(temp.left);
+        display(temp.right);
+    }
+
+
+    public int Max(){
+
+        return max(this.root);
+
+    }
+
+    private int max(Node temp) {
+
+        if(temp==null){
+            return Integer.MIN_VALUE;
+        }
+
+        int curr = temp.val;
+        int leftMax = max(temp.left);
+        int rightMax = max(temp.right);
+
+        int max = Math.max(curr,Math.max(leftMax,rightMax));
+
+        return max;
+    }
+
+    public int Min(){
+        return min(this.root);
+    }
+
+    private int min(Node temp) {
+
+        if(temp==null){
+            return Integer.MAX_VALUE;
+        }
+
+        int curr = temp.val;
+
+        int leftMin = min(temp.left);
+        int rightMin = min(temp.right);
+
+        int minVal = Math.min(curr,Math.min(leftMin,rightMin));
+        return minVal;
+    }
+
+
+
+}
