@@ -8,7 +8,7 @@ public class NextGreaterElement {
         Stack<Integer> st = new Stack<>();
 
         for (int i = 0; i < ans.length; i++) {
-
+  
             while(!st.isEmpty() && arr[i]>arr[st.peek()]){
 
                 ans[st.pop()] = arr[i]; 
