@@ -106,6 +106,23 @@ public class BinaryTree {
         return minVal;
     }
 
+    public boolean find(int k){
+        return find(this.root,k);
+    }
 
+    private boolean find(Node node, int k) {
+        if(node==null){
+            return false;
+        }
+
+        if(node.val==k){
+            return true;
+        }
+        
+        boolean left = find(node.left,k);
+        boolean right = find(node.right,k);
+
+        return left || right;
+    }
 
 }

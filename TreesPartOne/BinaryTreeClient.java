@@ -5,8 +5,8 @@ public class BinaryTreeClient {
         BinaryTree bt = new BinaryTree();
 
         bt.BinaryTree();
-        bt.Display();
-        System.out.println(bt.Max());
-        System.out.println(bt.Min());
+        System.out.println(bt.find(6));
+        
+        
     }
 }
