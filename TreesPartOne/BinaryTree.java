@@ -125,4 +125,69 @@ public class BinaryTree {
         return left || right;
     }
 
+
+    public int height(){
+        return height(this.root);
+    }
+
+    private int height(Node temp){
+
+        if(temp==null){
+            return -1;
+        }
+
+        int left = height(temp.left);
+        int right = height(temp.right);
+
+        return Math.max(left,right) + 1;        
+    }
+
+    public void PreOrder(){
+        preOrder(this.root);
+    }
+
+    private void preOrder(Node temp){
+
+        if(temp==null){
+            return;
+        }
+
+        System.out.print(temp.val + " ");
+
+        preOrder(temp.left);
+        preOrder(temp.right);
+        
+
+    }
+
+    public void InOrder(){
+        inOrder(this.root);
+    }
+
+    private void inOrder(Node temp){
+
+        if(temp==null){
+            return;
+        }
+        inOrder(temp.left);
+        System.out.print(temp.val + " ");
+        inOrder(temp.right);
+    }
+
+    public void PostOrder(){
+        postOrder(this.root);
+    }
+
+    private void postOrder(Node temp) {
+        
+        if(temp==null){
+            return;
+        }
+
+        postOrder(temp.left);
+        postOrder(temp.right);
+        System.out.print(temp.val + " ");
+
+    }
+
 }

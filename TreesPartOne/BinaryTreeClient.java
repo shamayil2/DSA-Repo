@@ -5,8 +5,9 @@ public class BinaryTreeClient {
         BinaryTree bt = new BinaryTree();
 
         bt.BinaryTree();
-        System.out.println(bt.find(6));
-        
-        
+
+
+        bt.PostOrder();
+
     }
 }
