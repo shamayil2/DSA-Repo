@@ -1,5 +1,5 @@
 package TreesPartOne;
-
+import java.util.*;
 import java.util.Scanner;
 
 public class BinaryTree {
@@ -188,6 +188,27 @@ public class BinaryTree {
         postOrder(temp.right);
         System.out.print(temp.val + " ");
 
+    }
+
+    public void LevelOrder(){
+
+        Queue<Node> q = new LinkedList<>();
+        q.add(this.root);
+
+        while(!q.isEmpty()){
+
+          Node temp =  q.remove();
+          System.out.println(temp.val + " ");
+          
+          if(temp.left!=null){
+            q.add(temp.left);
+          }
+          if(temp.right!=null){
+            q.add(temp.right);
+          }
+
+        }
+        System.out.println();
     }
 
 }

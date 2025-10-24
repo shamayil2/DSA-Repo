@@ -7,7 +7,7 @@ public class BinaryTreeClient {
         bt.BinaryTree();
 
 
-        bt.PostOrder();
-
+        // bt.PostOrder();
+        bt.LevelOrder();
     }
 }
