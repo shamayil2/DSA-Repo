@@ -2,7 +2,9 @@ package Graphs_HW;
 
 import java.util.HashMap;
 import java.util.HashSet;
-
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 public class Graph {
 
     private HashMap<Integer, HashMap<Integer, Integer>> graph;
@@ -107,4 +109,67 @@ public class Graph {
         vis.remove(src);
 
     }
+
+    public boolean BFS(int src , int dest){
+
+        Queue<Integer> q = new LinkedList<>();
+        HashSet<Integer> vis = new HashSet<>();
+        q.add(src);
+        while(!q.isEmpty()){
+
+        int num = q.remove();    
+        if(num==dest){
+            return true;
+        }    
+        if(vis.contains(num)){
+            continue;
+        }
+        vis.add(num);
+
+        for(Integer nbrs: graph.get(num).keySet()){
+            if(!vis.contains(nbrs)){
+                q.add(nbrs);
+            }
+        }
+
+        }
+
+        return false;
+    }   
+
+    public boolean DFS(int src,int dest){
+
+        Stack<Integer> st = new Stack<>();
+        HashSet<Integer> vis = new HashSet<>();
+
+        st.push(src);
+        while(!st.isEmpty()){
+
+            int num = st.pop();
+
+            if(num==dest){
+                return true;
+            }
+
+            if(vis.contains(num)){
+                continue;
+            }
+
+            vis.add(num);
+
+            for(Integer nbrs : graph.get(num).keySet()){
+
+                if(!vis.contains(nbrs)){
+                   
+                    st.push(nbrs);
+
+                }
+
+            }
+
+        }
+
+        return false;
+    }
+
 }

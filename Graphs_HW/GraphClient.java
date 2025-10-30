@@ -4,14 +4,13 @@ import java.util.HashSet;
 
 public class GraphClient {
     public static void main(String[] args) {
-        Graph g1 = new Graph(6);
+        Graph g1 = new Graph(5);
 
-        g1.addEdge(1, 2, 10);
-        g1.addEdge(1, 3, 10);
-        g1.addEdge(2, 6, 10);
-        g1.addEdge(2, 5, 10);
-        g1.addEdge(6, 4, 10);
-        g1.addEdge(5, 4, 10);
+        g1.addEdge(1,5,10);
+        g1.addEdge(1,3,10);
+        g1.addEdge(3,2,10);
+        g1.addEdge(3,5,10);
+        
 
         g1.Display();
 
@@ -27,7 +26,8 @@ public class GraphClient {
         // System.out.println(g1.hasPath(1, 3, new HashSet<>()));
         // System.out.println(g1.hasPath(3, 4, new HashSet<>()));
 
-        g1.printAllPath(3, 6, new HashSet<>(), "");
+       System.out.println(g1.DFS(3,4));
+       
 
     }
 }
