@@ -121,9 +121,9 @@ public class Graph {
         if(num==dest){
             return true;
         }    
-        if(vis.contains(num)){
-            continue;
-        }
+        // if(vis.contains(num)){
+        //     continue;
+        // }
         vis.add(num);
 
         for(Integer nbrs: graph.get(num).keySet()){
@@ -151,9 +151,9 @@ public class Graph {
                 return true;
             }
 
-            if(vis.contains(num)){
-                continue;
-            }
+            // if(vis.contains(num)){
+            //     continue;
+            // }
 
             vis.add(num);
 
