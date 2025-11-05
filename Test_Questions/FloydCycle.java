@@ -7,12 +7,16 @@ public class FloydCycle {
         LinkedList ll  = new LinkedList();
         ll.addFirst(20);
         ll.addFirst(30);
-        ll.addFirst(40);
+        ll.addFirst(40);  
         ll.addFirst(50);
         // ll.addLast(120);
-        // ll.createCycle(500);
+        ll.createCycle(3);
 
         System.out.println(ll.detectCycle());
+        ll.removeCycle();
+        System.out.println(ll.detectCycle());
+        ll.Display();
+
     }
 
 }
