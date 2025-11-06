@@ -101,18 +101,119 @@ public class Graph2 {
             }
         }
 
+        public boolean isCyclic(){
+            Stack<Integer> st = new Stack<>();
+            HashSet<Integer> vis = new HashSet<>();
+            
+            for(Integer src:graph2.keySet()){
+                if(vis.contains(src)){
+                    continue;
+                }
+                st.push(src);
+                while(!st.isEmpty()){
+
+                int num = st.pop();
+                if(vis.contains(num)){
+                    return true;
+                }
+                vis.add(num);
+                System.out.print(num + "  ");
+                for(Integer nbrs: graph2.get(num).keySet()){
+                    if(!vis.contains(nbrs)){
+                        st.push(nbrs);
+                    }
+                }
+
+            }
+
+            }
+
+            
+
+
+
+
+            return false;
+        }
+
+        public boolean isConnected(){
+
+            Queue<Integer> q = new LinkedList<>();
+            HashSet<Integer> vis = new HashSet<>();
+            int count = 0;
+            for(Integer src: graph2.keySet()){
+
+                if(vis.contains(src)){
+                    continue;
+                }
+                q.add(src);
+                count++;
+                while(!q.isEmpty()){
+
+                    int num = q.remove();
+
+                    if(vis.contains(num)){
+                        continue;
+                    }
+                    System.out.print(num + " ");
+                    vis.add(num);
+                    for(Integer nbrs: graph2.get(num).keySet()){
+                        if(!vis.contains(nbrs)){
+                            q.add(nbrs);
+                        }
+                    }
+
+                }
+
+            }
+            return count==1;
+        }
+
+        public boolean isTree(){
+            HashSet<Integer> vis = new HashSet<>();
+            Queue<Integer> q = new LinkedList<>();
+            int count = 0;
+            for(Integer src:graph2.keySet()){
+
+                if(vis.contains(src)){
+                    continue;
+                }
+                count++;
+                q.add(src);
+                while(!q.isEmpty()){
+                    int num = q.remove();
+
+                    if(vis.contains(num)){
+                        return false;
+                    }
+
+                    vis.add(num);
+
+                    for(Integer nbrs:graph2.get(num).keySet()){
+                        if(!vis.contains(nbrs)){
+                            q.add(nbrs);
+                        }
+                    }
+
+                }
+
+
+            }
+
+            return count==1;
+        }
 
      public static void main(){
 
-        Graph2 g2 = new Graph2(5);
+        Graph2 g2 = new Graph2(4);
         g2.addEdge(1,2,10);
-        g2.addEdge(1,4,10);
-        g2.addEdge(4,3,10);
         g2.addEdge(2,4,10);
-        g2.addEdge(5,4,10);
+        g2.addEdge(3,4,10);
         g2.BFT();
         g2.DFT();
-        
+        System.out.println(g2.isCyclic());
+        System.out.println(g2.isConnected());
+        System.out.println(g2.isTree());
 
        
         
